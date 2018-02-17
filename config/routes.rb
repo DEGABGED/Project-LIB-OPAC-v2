@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users
   # HTML Pages routes
   resources :books
+  root 'books#index'
 
   # JSON REST API routes
   namespace :api do
