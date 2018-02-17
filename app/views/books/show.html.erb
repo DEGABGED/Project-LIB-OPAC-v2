@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author %>
+</p>
+
+<p>
+  <strong>Section:</strong>
+  <%= @book.section %>
+</p>
+
+<p>
+  <strong>Batch:</strong>
+  <%= @book.batch %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @book.size %>
+</p>
+
+<p>
+  <strong>Callnr:</strong>
+  <%= @book.callnr %>
+</p>
+
+<p>
+  <strong>Time in:</strong>
+  <%= @book.time_in %>
+</p>
+
+<p>
+  <strong>Time out:</strong>
+  <%= @book.time_out %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @book.status %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
