@@ -13,3 +13,13 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+//
+// Custom JS for the template
+//= require sb-admin/add
+//= require jquery-easing/jquery.easing
+//= require sb-admin/sb-admin
+//= require datatables/jquery.dataTables
+//= require datatables/dataTables.bootstrap4

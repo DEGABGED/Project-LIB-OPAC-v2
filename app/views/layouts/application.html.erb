@@ -1,20 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
   <head>
-    <title>ProjectLibOpacV2</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Project LIB OPAC</title>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <h4>Logged in as <%= current_user.email %></h4>
-      <p><%= link_to "Sign out", destroy_user_session_path, method: :delete %></p>
-    <% end %>
-    <%= yield %>
+  <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+    <%= render "layouts/navbar" %>
+    <div class="content-wrapper">
+      <div class="container-fluid">
+      </div>
+      <!-- /.container-fluid-->
+      <!-- /.content-wrapper-->
+      <footer class="sticky-footer">
+        <div class="container">
+          <div class="text-center">
+            <small>Copyright © Project LIB 2018</small>
+          </div>
+        </div>
+      </footer>
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+      </a>
+
+
+      <!-- Create Book Modal -->
+      <%= render "books/form", book: Book.new %>
+
+      <!-- Edit Book Modal -->
+      <div class="modal" id="editModal" tabindex="-1">
+        <div class="modal-content">
+          <div class="container">
+            <div class="card card-register mx-auto mt-5">
+              <div class="card-header">Edit Book Entry</div>
+              <div class="card-body">
+                <form id="edit-book">
+                  <div class="form-group">
+                    <span class="input-group-append">
+                      <input name="id" class="form-control" type="text" placeholder="Enter Book ID">
+                      <span class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputTitle">Title</label>
+                    <input name="title" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter book's title">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAuthor">Author</label>
+                    <input name="author" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter author's name">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputSection">Section</label>
+                    <input name="section" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter section">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputStatus">Status</label>
+                    <input name="status" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter status">
+                  </div>
+                  &nbsp;
+                  <div class="form-group">
+                    <div class="form-row">
+                      <div class="col-md-6">
+                        <label for="inputBatch">Batch</label>
+                        <input name="batch" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Batch Number">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputSize">Size</label>
+                        <input name="size" class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Size Number">
+                      </div>
+                      &nbsp;
+                    </div>
+                  </div>
+                  <input type='submit' class="btn btn-primary btn-block" href="#" value="Edit Entry">
+                  <a class="btn btn-danger btn-block" data-dismiss="modal" href="#">Cancel</a>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Catalogue -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Book Catalogue </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Status</th>
+                </tr>
+              </tfoot>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+    </div>
+
+    </div>
   </body>
+
 </html>
+
+<!-- LICENSE -->
+<!-- This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2017-2018. -->
+

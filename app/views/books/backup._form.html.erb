@@ -1,0 +1,122 @@
+<%= form_with(model: book, local: true) do |form| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :book_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author, id: :book_author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :section %>
+    <%= form.text_field :section, id: :book_section %>
+  </div>
+
+  <div class="field">
+    <%= form.label :batch %>
+    <%= form.number_field :batch, id: :book_batch %>
+  </div>
+
+  <div class="field">
+    <%= form.label :size %>
+    <%= form.number_field :size, id: :book_size %>
+  </div>
+
+  <div class="field">
+    <%= form.label :callnr %>
+    <%= form.number_field :callnr, id: :book_callnr %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_in %>
+    <%= form.datetime_select :time_in, id: :book_time_in %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_out %>
+    <%= form.datetime_select :time_out, id: :book_time_out %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, id: :book_status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+      <!-- Create Book Modal -->
+      <div class="modal" id="createModal" tabindex="-1">
+        <div class="modal-content">
+          <div class="container">
+            <div class="card card-register mx-auto mt-5">
+              <div class="card-header">Create Book Entry</div>
+              <div class="card-body">
+                <%= form_with(model: book, local: true, id: "create-book") do |form| %>
+                  <% if book.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+                      <ul>
+                        <% book.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                  <div class="form-group">
+                    <%= form.label :title %>
+                    <input name="title" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter book's title">
+                    <%= form.text_field :title, id: :book_title, html: {class: "form-control", aria-describedby: "emailHelp" placeholder: "Enter book's title"} %>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAuthor">Author</label>
+                    <input name="author" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter author's name">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputSection">Section</label>
+                    <input name="section" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter section">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputStatus">Status</label>
+                    <input name="status" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter status">
+                  </div>
+                  &nbsp;
+                  <div class="form-group">
+                    <div class="form-row">
+                      <div class="col-md-6">
+                        <label for="inputBatch">Batch</label>
+                        <input name="batch" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Batch Number">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputSize">Size</label>
+                        <input name="size" class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Size Number">
+                      </div>
+                      &nbsp;
+                    </div>
+                  </div>
+                  <input type='submit' class="btn btn-primary btn-block" href="#" value="Create Entry">
+                  <a class="btn btn-danger btn-block" data-dismiss="modal" href="#">Cancel</a>
+
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
