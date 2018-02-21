@@ -37,95 +37,15 @@
 
 
       <!-- Create Book Modal -->
-      <%= render "books/form", book: Book.new %>
+      <div class="modal" id="createModal" tabindex="-1">
+      </div>
 
       <!-- Edit Book Modal -->
       <div class="modal" id="editModal" tabindex="-1">
-        <div class="modal-content">
-          <div class="container">
-            <div class="card card-register mx-auto mt-5">
-              <div class="card-header">Edit Book Entry</div>
-              <div class="card-body">
-                <form id="edit-book">
-                  <div class="form-group">
-                    <span class="input-group-append">
-                      <input name="id" class="form-control" type="text" placeholder="Enter Book ID">
-                      <span class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </span>
-                    </span>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputTitle">Title</label>
-                    <input name="title" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter book's title">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputAuthor">Author</label>
-                    <input name="author" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter author's name">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputSection">Section</label>
-                    <input name="section" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter section">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputStatus">Status</label>
-                    <input name="status" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter status">
-                  </div>
-                  &nbsp;
-                  <div class="form-group">
-                    <div class="form-row">
-                      <div class="col-md-6">
-                        <label for="inputBatch">Batch</label>
-                        <input name="batch" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Batch Number">
-                      </div>
-                      <div class="col-md-6">
-                        <label for="inputSize">Size</label>
-                        <input name="size" class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Size Number">
-                      </div>
-                      &nbsp;
-                    </div>
-                  </div>
-                  <input type='submit' class="btn btn-primary btn-block" href="#" value="Edit Entry">
-                  <a class="btn btn-danger btn-block" data-dismiss="modal" href="#">Cancel</a>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Catalogue -->
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Book Catalogue </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tfoot>
-                <tr>
-                  <th>ID</th>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Status</th>
-                </tr>
-              </tfoot>
-              <tbody>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-      </div>
+      <%= yield %>
     </div>
 
     </div>

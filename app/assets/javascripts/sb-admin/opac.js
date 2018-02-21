@@ -1,3 +1,4 @@
+/*
 $(document).ready(() => {
   // Instantiate some variables and objects
   const $dataTable = $('#dataTable');

@@ -18,11 +18,11 @@
         </a>
         <ul class="sidenav-second-level collapse" id="collapseMulti">
           <li>
-            <a id="createBtn" data-toggle="modal" href="#createModal">Create Book Entry</a>
+            <%= link_to "Create Book Entry", new_book_path, remote: true, id: "createBtn" %>
           </li>
-          <li>
+          <!--li>
             <a id="editBtn" data-toggle="modal" href="#editModal">Edit Book Entry</a>
-          </li>
+          </li-->
           <li>
             <a id="deleteBtn" href="#">Delete Book Entry</a>
           </li>
