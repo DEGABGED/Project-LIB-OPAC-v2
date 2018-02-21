@@ -1,8 +1,7 @@
-<!-- Create Book Modal -->
 <div class="modal-content">
   <div class="container">
     <div class="card card-register mx-auto mt-5">
-      <div class="card-header">Create Book Entry</div>
+      <div class="card-header"><%=text%> Book Entry</div>
       <div class="card-body">
         <%= form_with(model: book, id: "create-book", remote: true) do |form| %>
           <% if book.errors.any? %>
@@ -46,7 +45,7 @@
               &nbsp;
             </div>
           </div>
-          <%= form.submit :value => "Create Entry", :class => "btn btn-primary btn-block" , :remote => true %>
+          <%= form.submit :value => "#{text} Entry", :class => "btn btn-primary btn-block" , :remote => true %>
           <a class="btn btn-danger btn-block" data-dismiss="modal" href="#">Cancel</a>
 
         <% end %>
