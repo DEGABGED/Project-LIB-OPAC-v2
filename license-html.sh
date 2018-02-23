@@ -1,7 +1,7 @@
 shopt -s globstar
-for i in **/*.rb
+for i in **/*.html.erb
 do
-  echo "" >> $i
+  echo "<!--" >> $i
   echo "# Author: ${1}" >> $i
   echo "# This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2017-2018." >> $i
 
@@ -17,7 +17,7 @@ do
   echo "# Group 3" >> $i
   echo "# Recoletas Chapel" >> $i
   echo "#" >> $i
-  echo "##" >> $i
+  echo "-->" >> $i
 done
 
-# ./license.sh <name> <sprint created> <extension>
+# ./license.sh <name> <sprint created>
