@@ -15,23 +15,26 @@
         </thead>
         <!--tfoot>
           <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Status</th>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Status</th>
           </tr>
-        </tfoot-->
-        <tbody>
-          <% for book in @books do %>
-            <% puts book.title %>
-            <tr>
-              <td><%= book.id %></td>
-              <td><%= link_to book.title, edit_book_path(book), remote: true %></td>
-              <td><%= book.author %></td>
-              <td><%= book.status %></td>
-            </tr>
-          <% end %>
-        </tbody>
+          </tfoot-->
+          <tbody>
+            <% for book in @books do %>
+              <tr>
+                <td><%= book.id %></td>
+                <% if user_signed_in? %>
+                  <td><%= link_to book.title, edit_book_path(book), remote: true %></td>
+                <% else %>
+                  <td><%= book.title %></td>
+                <% end %>
+                <td><%= book.author %></td>
+                <td><%= book.status %></td>
+              </tr>
+            <% end %>
+          </tbody>
       </table>
     </div>
   </div>

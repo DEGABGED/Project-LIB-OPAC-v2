@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  #before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   # GET /books
@@ -32,7 +32,6 @@ class BooksController < ApplicationController
         format.html { redirect_to books_path, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
-        puts @book.errors
         format.html { render :new }
         format.json { render json: @book.errors.messages, status: :unprocessable_entity }
         format.js   { render json: @book.errors.messages, status: :unprocessable_entity }
@@ -58,10 +57,14 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
-    @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
-      format.json { head :no_content }
+      if @book.destroy
+        format.json { head :no_content }
+      else
+        format.html { redirect_to books_url, notice: 'Cannot delete book.' }
+        format.json { render json: @book.errors, status: :unprocessable_entity }
+        format.js   { render json: @book.errors, status: :unprocessable_entity }
+      end
     end
   end
 

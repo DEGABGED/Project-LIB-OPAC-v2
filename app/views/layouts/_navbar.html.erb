@@ -5,10 +5,11 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+      <% if user_signed_in? %>
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Name of Authorized User">
         <a class="nav-link" href="Name of Authorized User.html">
           <i class="fa fa-fw fa-area-chart"></i>
-          <span class="nav-link-text">Name of Authorized User</span>
+          <span class="nav-link-text"><%= current_user.email %></span>
         </a>
       </li>
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Catalogue Management">
@@ -28,6 +29,14 @@
           </li>
         </ul>
       </li>
+    <% else %>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Log In">
+            <%= link_to(new_user_session_path, class: "nav-link") do %>
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Log In</span>
+          <% end %>
+        </li>
+    <% end %>
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="About">
         <a class="nav-link" href="#">
           <i class="fa fa-fw fa-link"></i>
@@ -62,6 +71,14 @@
           </div>
         </form>
       </li>
+      <% if user_signed_in? %>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Logout">
+          <%= link_to(destroy_user_session_path, class: "nav-link", method: :delete) do %>
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Logout</span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </nav>

@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
   enum status: [:in_shelf, :on_circ, :discont]
   before_create :set_defaults
+  before_destroy :before_destroy
   validates :title, :author, :section, :batch, :size, presence: :true
 
   SECTIONS = ["Uncategorized",
@@ -57,5 +58,11 @@ class Book < ApplicationRecord
     self.callnr ||= Book.all.size + 1
     self.time_out = Time.now()
     self.time_in = Time.now()
+  end
+
+  def before_destroy
+    return true if self.status != :on_circ and self.status != 'on_circ'
+    errors.add :base, "Cannot delete book currently being borrowed."
+    throw(:abort)
   end
 end

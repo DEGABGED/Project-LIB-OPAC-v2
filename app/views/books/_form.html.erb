@@ -46,6 +46,9 @@
             </div>
           </div>
           <%= form.submit :value => "#{text} Entry", :class => "btn btn-primary btn-block" , :remote => true %>
+          <% if book.id != nil %>
+            <%= link_to "Delete Entry", book_path(book.id), :data => {:confirm => "Are you sure?"}, :id => "deleteButton", :class => "btn btn-danger btn-block", :method => :delete, :remote => true %>
+          <% end %>
           <a class="btn btn-danger btn-block" data-dismiss="modal" href="#">Cancel</a>
 
         <% end %>

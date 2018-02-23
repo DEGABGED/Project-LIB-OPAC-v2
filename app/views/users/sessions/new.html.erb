@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="card card-login mx-auto mt-5">
+    <div class="card-header">Login</div>
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <!--input class="form-control" id="Username" type="username" aria-describedby="usernameHelp" placeholder="Enter Username"-->
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Enter Email" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+        </div>
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+        <%= f.submit "Login", class: "btn btn-primary btn-block" %>
+        <%= link_to "Continue as Guest", root_path, class: "btn btn-primary btn-block" %>
+      <% end %>
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>
