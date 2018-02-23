@@ -1,24 +1,116 @@
-# README
+# Project LIB OPAC
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+Project LIB OPAC is an OPAC system for the library in the Recoletas Chapel
 
-* Ruby version
+## Installation
 
-* System dependencies
+> To be followed...
 
-* Configuration
+## API Guide
 
-* Database creation
+### Book Catalog
 
-* Database initialization
+#### GET /api/books/
+View all books
 
-* How to run the test suite
+Response format:
+```
+[
+	{
+		"id": 1,
+        "title": "The Last Question",
+        "author": "Isaac Asimov",
+        "section": "Games and Learning",
+        "batch": 3,
+        "size": 3,
+        "callnr": 1,
+        "time_in": "2017-07-18T14:56:19.178Z",
+        "time_out": "2017-07-18T14:56:19.178Z",
+        "created_at": "2017-07-18T14:56:19.176Z",
+        "updated_at": "2017-07-18T14:56:19.176Z",
+        "status": "in_shelf"
+	},
+	...
+]
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+#### GET /api/books/:id/
+View a specific book
 
-* Deployment instructions
+Response format:
+```
+{
+    "id": 1,
+    "title": "The Last Question",
+    "author": "Isaac Asimov",
+    "section": "Games and Learning",
+    "batch": 3,
+    "size": 3,
+    "callnr": 1,
+    "time_in": "2017-07-18T14:56:19.178Z",
+    "time_out": "2017-07-18T14:56:19.178Z",
+    "created_at": "2017-07-18T14:56:19.176Z",
+    "updated_at": "2017-07-18T14:56:19.176Z",
+    "status": "in_shelf"
+}
+```
 
-* ...
+#### PATCH /api/books/:id/borrow/
+Borrow a specific book
+
+#### PATCH /api/books/:id/return/
+Return a specific book
+
+### Administrative functions
+
+#### POST /api/books/
+Create a new book
+
+Headers:
+```
+Content-Type: application/json
+```
+
+Request body:
+```
+{
+    "title": "CLRS",
+    "author": "Cormen",
+    "section": "Games and Learning",
+    "batch": 3,
+    "size": 3
+}
+```
+
+Response format:
+```
+\\ Same as 'View a specific book'
+```
+
+#### PATCH /api/books/:id/
+Edit a specific book
+
+Headers:
+```
+Content-Type: application/json
+```
+
+Request body:
+```
+{
+	"title": "Data Structures",
+	"author": "Evangel Quiwa"
+}
+\\ Can contain any subset of the required fields for 'Create a new book'
+```
+
+Response format:
+204 No Content
+
+#### DELETE /api/books/:id/
+Delete a specific book
+
+Response format:
+204 No Content
