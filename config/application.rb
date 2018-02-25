@@ -30,6 +30,9 @@ module ProjectLibOpacV2
 
     # Add vendor to asset pipeline
     config.assets.paths << Rails.root.join("vendor", "assets")
+
+    # Heroku
+    #config.assets.initialize_on_precompile = false
   end
 end
 

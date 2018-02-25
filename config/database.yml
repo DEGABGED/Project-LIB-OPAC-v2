@@ -25,4 +25,6 @@ test:
 production:
   <<: *default
   database: projectlibopac_production
+  username: projectlibopac
+  password: <%= ENV['OPAC_DATABASE_PASSWORD'] %>
 
