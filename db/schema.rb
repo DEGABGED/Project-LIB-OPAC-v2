@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217081128) do
+ActiveRecord::Schema.define(version: 20180307071009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180217081128) do
     t.string "author"
     t.string "section"
     t.integer "batch"
-    t.integer "size"
+    t.string "size"
     t.integer "callnr"
     t.datetime "time_in"
     t.datetime "time_out"
@@ -47,18 +47,3 @@ ActiveRecord::Schema.define(version: 20180217081128) do
   end
 
 end
-
-# Author: Francis Zac dela Cruz
-# This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2017-2018.
-
-# Code History:
-# Francis Zac dela Cruz
-# 02/23/18
-# Sprint 2
-
-# Comments
-# 02/23/18
-# Group 3
-# Recoletas Chapel
-#
-##

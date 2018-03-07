@@ -1,10 +1,5 @@
 class Book < ApplicationRecord
-  enum status: [:in_shelf, :on_circ, :discont]
-  before_create :set_defaults
-  before_destroy :before_destroy
-  validates :title, :author, :section, :batch, :size, presence: :true
-
-  SECTIONS = ["Uncategorized",
+  SECTIONS = ["-Uncategorized",
               "Arts and Crafts",
               "Bible Stories",
               "Cartoons",
@@ -32,8 +27,20 @@ class Book < ApplicationRecord
               "Young Adult",
               "Zoo"]
 
+  SIZES = ["Small",
+           "Medium",
+           "Large"]
+
+  enum status: [:in_shelf, :on_circ, :discont]
+  before_create :set_defaults
+  before_destroy :before_destroy
+  validates :title, :author, :section, :batch, :size, presence: :true
   validates :section, inclusion: {
     in: SECTIONS,
+    message: "is invalid"
+  }
+  validates :size, inclusion: {
+    in: SIZES,
     message: "is invalid"
   }
 
@@ -55,6 +62,10 @@ class Book < ApplicationRecord
     else
       return false
     end
+  end
+
+  def bookcode
+    "#{self.section[0]}#{self.batch} #{self.callnr} #{self.size[0]}"
   end
 
   private

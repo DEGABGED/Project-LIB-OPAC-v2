@@ -24,7 +24,7 @@
           <tbody>
             <% for book in @books do %>
               <tr>
-                <td><%= book.id %></td>
+                <td><%= book.bookcode %></td>
                 <% if user_signed_in? %>
                   <td><%= link_to book.title, edit_book_path(book), remote: true %></td>
                 <% else %>
