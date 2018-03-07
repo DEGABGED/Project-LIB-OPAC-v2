@@ -32,6 +32,11 @@ class Book < ApplicationRecord
               "Young Adult",
               "Zoo"]
 
+  validates :section, inclusion: {
+    in: SECTIONS,
+    message: "is invalid"
+  }
+
   def borrow_book
     if self.in_shelf?
       self.status = :on_circ
@@ -55,7 +60,7 @@ class Book < ApplicationRecord
   private
   def set_defaults
     self.status ||= :in_shelf
-    self.callnr ||= Book.all.size + 1
+    self.callnr ||= self.id
     self.time_out = Time.now()
     self.time_in = Time.now()
   end
