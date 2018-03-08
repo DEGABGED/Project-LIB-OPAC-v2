@@ -8,6 +8,35 @@ Project LIB OPAC is an OPAC system for the library in the Recoletas Chapel
 
 > To be followed...
 
+## Database Setup
+
+> Note: These instructions are for Linux
+
+First install PostgreSQL [here](https://www.postgresql.org/download/linux/ubuntu/) (instructions may vary depending on system)
+You can test by checking if you can run `psql`.
+
+Create the database and users by going into the PostgreSQL shell:
+```
+$ sudo -u postgres psql
+```
+
+Then run the following commands:
+```
+CREATE USER projectlibopac WITH ENCRYPTED PASSWORD 'bakitkopasyamahal' ;
+CREATE DATABASE projectlibopac_development OWNER projectlibopac ;
+CREATE DATABASE projectlibopac_test OWNER projectlibopac ;
+CREATE DATABASE projectlibopac_production OWNER projectlibopac ;
+```
+
+Finally, you can run the Rails commands for the database:
+```
+$ rails db:create
+$ rails db:migrate
+```
+If you're getting Peer Authentication failed errors, you might have to edit your pg_hba.conf file.
+
+[Check this StackOverflow link for details.](https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge)
+
 ## API Guide
 
 ### Book Catalog
