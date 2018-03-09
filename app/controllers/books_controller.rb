@@ -5,7 +5,11 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    @books = if params[:term]
+               Book.where('title LIKE ?', "%#{params[:term]}%")
+             else
+               Book.all
+             end
   end
 
   # GET /books/1
@@ -76,7 +80,7 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :author, :section, :batch, :size, :callnr, :time_in, :time_out, :status)
+      params.require(:book).permit(:title, :author, :section, :batch, :size, :callnr, :time_in, :time_out, :status, :term)
     end
 end
 

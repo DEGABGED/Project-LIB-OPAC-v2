@@ -29,7 +29,7 @@
           </div>
           <div class="form-group">
             <%= form.label :status %>
-            <%= form.text_field :status, :id => :book_status, :class => "form-control", "aria-describedby" => "emailHelp", :placeholder => "Enter status" %>
+            <%= form.select :status, Book::STATUSES, {}, {class: "form-control"} %>
           </div>
           &nbsp;
           <div class="form-group">
@@ -40,7 +40,7 @@
               </div>
               <div class="col-md-6">
                 <%= form.label :size %>
-                <%= form.text_field :size, :id => :book_size, :class => "form-control", "aria-describedby" => "emailHelp", :placeholder => "Enter size" %>
+                <%= form.select :size, Book::SIZES, {}, {class: "form-control"} %>
               </div>
               &nbsp;
             </div>

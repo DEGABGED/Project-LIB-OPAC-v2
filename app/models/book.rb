@@ -31,6 +31,10 @@ class Book < ApplicationRecord
            "Medium",
            "Large"]
 
+  STATUSES = [:in_shelf,
+              :on_circ,
+              :discont]
+
   enum status: [:in_shelf, :on_circ, :discont]
   before_create :set_defaults
   before_destroy :before_destroy
