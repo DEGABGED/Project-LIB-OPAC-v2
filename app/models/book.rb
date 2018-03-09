@@ -72,6 +72,20 @@ class Book < ApplicationRecord
     "#{self.section[0]}#{self.batch} #{self.callnr} #{self.size[0]}"
   end
 
+  def self.search(key, term)
+    if key and term
+      if key == "Title"
+        where('title LIKE ?', "%#{term}%")
+      elsif key == "Author"
+        where('author LIKE ?', "%#{term}%")
+      else
+        where('title LIKE ?', "%#{term}%")
+      end
+    else
+      all
+    end
+  end
+
   private
   def set_defaults
     self.status ||= :in_shelf

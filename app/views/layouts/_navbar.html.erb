@@ -55,9 +55,7 @@
       <li class="nav-item">
         <%= form_tag(books_path, method: :get, class: "form-inline my-2 my-lg-0 mr-lg-2") do %>
           <div class="btn-group btn-group-md">
-            <button type="button" class="btn btn-default">Title</button>
-            <button type="button" class="btn btn-default">Author</button>
-            <button type="button" class="btn btn-default">Keywords</button>
+            <%= select_tag :search_key, options_for_select(["Title", "Author"]), class: "form-control" %>
           </div>
           <span class="input-group-append">
             <%= text_field_tag :term, params[:term], class: "form-control", placeholder: "Search for..." %>
