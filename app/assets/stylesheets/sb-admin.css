@@ -1,6 +1,7 @@
 html {
   position: relative;
   min-height: 100%;
+  font-size: 120%
 }
 
 body {
@@ -475,6 +476,7 @@ footer.sticky-footer {
   body.sidenav-toggled footer.sticky-footer {
     width: calc(100% - 55px);
   }
+
 }
 
 
