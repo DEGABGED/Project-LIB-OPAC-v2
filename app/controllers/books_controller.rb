@@ -59,6 +59,7 @@ class BooksController < ApplicationController
   def destroy
     respond_to do |format|
       if @book.destroy
+        format.html { redirect_to root_url }
         format.json { head :no_content }
       else
         format.html { redirect_to books_url, notice: 'Cannot delete book.' }
