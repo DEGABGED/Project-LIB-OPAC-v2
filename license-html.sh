@@ -1,5 +1,5 @@
 shopt -s globstar
-for i in **/*.html.erb
+for i in `grep --include=\*.{html\.erb,html} --exclude-dir=vendor -rwL . -e 'Solamo'`
 do
   echo "<!--" >> $i
   echo "# Author: ${1}" >> $i

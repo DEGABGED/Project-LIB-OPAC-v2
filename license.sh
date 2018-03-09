@@ -1,5 +1,5 @@
 shopt -s globstar
-for i in **/*.rb
+for i in `grep --include=\*.rb -rwL . -e 'Solamo'`
 do
   echo "" >> $i
   echo "# Author: ${1}" >> $i
