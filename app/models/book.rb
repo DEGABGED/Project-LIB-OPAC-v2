@@ -89,9 +89,9 @@ class Book < ApplicationRecord
   private
   def set_defaults
     self.status ||= :in_shelf
-    self.callnr ||= self.id
     self.time_out = Time.now()
     self.time_in = Time.now()
+    self.callnr ||= Book.all.size
   end
 
   def before_destroy
