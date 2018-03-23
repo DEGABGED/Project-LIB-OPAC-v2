@@ -49,9 +49,18 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
+        <%= link_to "In Shelf", books_path(:search_key => "Status", :term => "in_shelf") %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "On Circ", books_path(:search_key => "Status", :term => "on_circ") %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Discont", books_path(:search_key => "Status", :term => "discont") %>
+      </li>
+      <li class="nav-item">
         <%= form_tag(books_path, method: :get, class: "form-inline my-2 my-lg-0 mr-lg-2") do %>
           <div class="btn-group btn-group-md">
-            <%= select_tag :search_key, options_for_select(["Title", "Author"]), class: "form-control" %>
+            <%= select_tag :search_key, options_for_select(["Title", "Author", "Section"]), class: "form-control" %>
           </div>
           <span class="input-group-append">
             <%= text_field_tag :term, params[:term], class: "form-control", placeholder: "Search for..." %>

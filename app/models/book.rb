@@ -75,11 +75,15 @@ class Book < ApplicationRecord
   def self.search(key, term)
     if key and term
       if key == "Title"
-        where('title LIKE ?', "%#{term}%")
+        where('LOWER (title) LIKE ?', "%#{term.downcase}%")
       elsif key == "Author"
-        where('author LIKE ?', "%#{term}%")
+        where('LOWER (author) LIKE ?', "%#{term.downcase}%")
+      elsif key == "Section"
+        where('LOWER (section) LIKE ?', "%#{term.downcase}%")
+      elsif key == "Status"
+        where('status = ?', "#{Book.statuses[term]}")
       else
-        where('title LIKE ?', "%#{term}%")
+        where('LOWER (title) LIKE ?', "%#{term.downcase}%")
       end
     else
       all
