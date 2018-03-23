@@ -47,16 +47,24 @@
         </a>
       </li>
     </ul>
+
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <%= link_to "In Shelf", books_path(:search_key => "Status", :term => "in_shelf") %>
+        <%= link_to(books_path(:search_key => "Status", :term => "in_shelf"), class: "nav-link") do %>
+          <span class="nav-link-text">In Shelf</span>
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "On Circ", books_path(:search_key => "Status", :term => "on_circ") %>
+        <%= link_to(books_path(:search_key => "Status", :term => "on_circ"), class: "nav-link") do %>
+          <span class="nav-link-text">On Circulation</span>
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "Discont", books_path(:search_key => "Status", :term => "discont") %>
+        <%= link_to(books_path(:search_key => "Status", :term => "discont"), class: "nav-link") do %>
+          <span class="nav-link-text">Discontinued</span>
+        <% end %>
       </li>
+
       <li class="nav-item">
         <%= form_tag(books_path, method: :get, class: "form-inline my-2 my-lg-0 mr-lg-2") do %>
           <div class="btn-group btn-group-md">

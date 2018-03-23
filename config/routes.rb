@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :books
   root 'books#index'
 
+  patch 'books/:id/borrow' => 'books#borrow', as: :borrow
+  patch 'books/:id/return' => 'books#return', as: :return
+
   # JSON REST API routes
   namespace :api do
     resources :books
