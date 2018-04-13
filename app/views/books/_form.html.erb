@@ -59,11 +59,11 @@
             </div>
           </div>
           <% if book.status == "in_shelf" %>
-             <%= form.submit :value => "Borrow Book", :class => "btn btn-primary btn-block" , :remote => true %>
+            <%= link_to "Borrow Book", borrow_path(book.id), :id => "borrowButton", :class => "btn btn-primary btn-block", :method => :patch, :remote => true %>
           <% end %>
 
           <% if book.status == "on_circ" %>
-             <%= form.submit :value => "Return Book", :class => "btn btn-primary btn-block" , :remote => true %>
+            <%= link_to "Return Book", return_path(book.id), :id => "returnButton", :class => "btn btn-primary btn-block", :method => :patch, :remote => true %>
           <% end %>
 
           <%= form.submit :value => "#{text} Entry", :class => "btn btn-primary btn-block" , :remote => true %>

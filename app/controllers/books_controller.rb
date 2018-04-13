@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :borrow, :return]
 
   # GET /books
   # GET /books.json
@@ -65,6 +65,30 @@ class BooksController < ApplicationController
         format.html { redirect_to books_url, notice: 'Cannot delete book.' }
         format.json { render json: @book.errors, status: :unprocessable_entity }
         format.js   { render json: @book.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH /books/:id/borrow
+  def borrow
+    respond_to do |format|
+      if @book.borrow_book && @book.save!
+        format.html { redirect_to books_path, notice: 'Book was successfully borrowed.' }
+      else
+        format.html { render :edit }
+        format.js   { render json: @book.errors.messages, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH /books/:id/return
+  def return
+    respond_to do |format|
+      if @book.return_book && @book.save!
+        format.html { redirect_to books_path, notice: 'Book was successfully returned.' }
+      else
+        format.html { render :edit }
+        format.js   { render json: @book.errors.messages, status: :unprocessable_entity }
       end
     end
   end
