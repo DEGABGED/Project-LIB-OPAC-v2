@@ -29,7 +29,6 @@
           </div>
           <div class="form-group">
             <%= form.label :status %><br>
-            <%= form.text_field :status, :id => :book_author, :class => "form-control", "aria-describedby" => "emailHelp", :placeholder => book.status, :readonly => true %>
 
             <!-- <%= form.label :status, book.status %><br> -->
             <!-- <%= form.select :status, Book::STATUSES, {}, {class: "form-control"} %> -->
@@ -37,11 +36,16 @@
             <input type="radio" name="Status" value="Return to Circulation"> Return to Circulation <br> -->
             <!-- <%= form.label :Discontinue? %> -->
 
-            <%= form.label :circ, "Discontinue", :value => "true" %>
-            <%= form.radio_button :circ, true, :checked => (book.status == "discont") %>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= form.label :discont, "Return to Circulation", :value => "false" %>
-            <%= form.radio_button :circ, false, :checked => !(book.status == "discont") %>
+            <% if book.status %>
+              <%= form.text_field :status, :id => :book_author, :class => "form-control", "aria-describedby" => "emailHelp", :placeholder => book.status, :readonly => true %>
+              <%= form.label :circ, "Discontinue", :value => "true" %>
+              <%= form.radio_button :circ, true, :checked => (book.status == "discont") %>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= form.label :discont, "Return to Circulation", :value => "false" %>
+              <%= form.radio_button :circ, false, :checked => !(book.status == "discont") %>
+            <% else %>
+              <%= form.select :status, Book::STATUSES, {}, {class: "form-control"} %>
+            <% end %>
           </div>
 
           &nbsp;
