@@ -90,6 +90,18 @@ class Book < ApplicationRecord
     end
   end
 
+  def update(book_params)
+    if book_params[:circ] != nil
+      puts book_params[:circ]
+      if book_params[:circ] == "false"
+        book_params["status"] = "in_shelf"
+      else
+        book_params["status"] = "discont"
+      end
+    end
+    super(book_params.except(:circ))
+  end
+
   private
   def set_defaults
     self.status ||= :in_shelf

@@ -28,9 +28,22 @@
             <%= form.select :section, Book::SECTIONS, {include_blank: "Select a Section..."}, {id: :book_section, class: "form-control"} %>
           </div>
           <div class="form-group">
-            <%= form.label :status %>
-            <%= form.select :status, Book::STATUSES, {}, {class: "form-control"} %>
+            <%= form.label :status %><br>
+            <%= form.text_field :status, :id => :book_author, :class => "form-control", "aria-describedby" => "emailHelp", :placeholder => book.status, :readonly => true %>
+
+            <!-- <%= form.label :status, book.status %><br> -->
+            <!-- <%= form.select :status, Book::STATUSES, {}, {class: "form-control"} %> -->
+            <!-- <input type="radio" name="Status" value="Discontinue"> Discontinue<br>
+            <input type="radio" name="Status" value="Return to Circulation"> Return to Circulation <br> -->
+            <!-- <%= form.label :Discontinue? %> -->
+
+            <%= form.label :circ, "Discontinue", :value => "true" %>
+            <%= form.radio_button :circ, true, :checked => (book.status == "discont") %>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= form.label :discont, "Return to Circulation", :value => "false" %>
+            <%= form.radio_button :circ, false, :checked => !(book.status == "discont") %>
           </div>
+
           &nbsp;
           <div class="form-group">
             <div class="form-row">
