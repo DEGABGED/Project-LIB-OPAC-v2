@@ -1,5 +1,9 @@
 //= require jquery3
 
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 $(document).ready(() => {
   $("#createModal").on("ajax:success", (e, data, status, xhr) => {
     location.reload();
@@ -8,7 +12,7 @@ $(document).ready(() => {
     console.log(msg);
     alert_msg = "";
     for(i in msg) {
-      alert_msg += (i + " " + msg[i][0] + "\n");
+      alert_msg += ((i.localeCompare("base") ? i.capitalize() + " " : "") + msg[i][0] + "\n");
     }
     alert(alert_msg);
   });
@@ -20,7 +24,8 @@ $(document).ready(() => {
     console.log(msg);
     alert_msg = "";
     for(i in msg) {
-      alert_msg += (i + " " + msg[i][0] + "\n");
+      //alert_msg += (i + " " + msg[i][0] + "\n");
+      alert_msg += ((i.localeCompare("base") ? i.capitalize() + " " : "") + msg[i][0] + "\n");
     }
     alert(alert_msg);
   });
@@ -32,7 +37,7 @@ $(document).ready(() => {
     console.log(msg);
     alert_msg = "";
     for(i in msg) {
-      alert_msg += (i + " " + msg[i][0] + "\n");
+      alert_msg += ((i.localeCompare("base") ? i.capitalize() + " " : "") + msg[i][0] + "\n");
     }
     alert(alert_msg);
   });

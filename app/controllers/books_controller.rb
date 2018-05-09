@@ -65,8 +65,8 @@ class BooksController < ApplicationController
         format.json { head :no_content }
       else
         format.html { redirect_to books_url, notice: 'Cannot delete book.' }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-        format.js   { render json: @book.errors, status: :unprocessable_entity }
+        format.json { render json: @book.errors.messages, status: :unprocessable_entity }
+        format.js   { render json: @book.errors.messages, status: :unprocessable_entity }
       end
     end
   end
