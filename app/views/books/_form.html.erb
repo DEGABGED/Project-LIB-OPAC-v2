@@ -63,7 +63,7 @@
             </div>
           </div>
           <% if book.status == "in_shelf" %>
-            <%= link_to "Borrow Book", borrow_path(book.id), :id => "borrowButton", :class => "btn btn-primary btn-block", :method => :patch, :remote => true %>
+            <%= link_to "Loan Book", borrow_path(book.id), :id => "borrowButton", :class => "btn btn-primary btn-block", :method => :patch, :remote => true %>
           <% end %>
 
           <% if book.status == "on_circ" %>
