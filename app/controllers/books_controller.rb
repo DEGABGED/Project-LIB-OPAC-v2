@@ -16,10 +16,12 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+    @type = "Create"
   end
 
   # GET /books/1/edit
   def edit
+    @type = "Edit"
   end
 
   # POST /books
