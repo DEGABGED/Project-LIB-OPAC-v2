@@ -35,6 +35,12 @@ class Book < ApplicationRecord
               :on_circ,
               :discont]
 
+  STATUS_TITLES = {
+    "in_shelf" => "In Shelf",
+    "on_circ" => "On Loan",
+    "discont" => "Discontinued"
+  }
+
   enum status: [:in_shelf, :on_circ, :discont]
   before_create :set_defaults
   before_destroy :before_destroy
@@ -66,6 +72,10 @@ class Book < ApplicationRecord
     else
       return false
     end
+  end
+
+  def status_title
+    STATUS_TITLES[self.status]
   end
 
   def bookcode

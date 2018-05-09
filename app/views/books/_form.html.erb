@@ -37,14 +37,14 @@
             <!-- <%= form.label :Discontinue? %> -->
 
             <% if book.status %>
-              <%= form.text_field :status, :id => :book_author, :class => "form-control", "aria-describedby" => "emailHelp", :placeholder => book.status, :readonly => true %>
+              <%= form.text_field :status, :value => book.status_title, :id => :book_author, :class => "form-control", "aria-describedby" => "emailHelp", :placeholder => book.status, :readonly => true %>
               <%= form.label :circ, "Discontinue", :value => "true" %>
               <%= form.radio_button :circ, true, :checked => (book.status == "discont") %>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <%= form.label :discont, "Return to Circulation", :value => "false" %>
               <%= form.radio_button :circ, false, :checked => !(book.status == "discont") %>
             <% else %>
-              <%= form.select :status, Book::STATUSES, {}, {class: "form-control"} %>
+              <%= form.select :status, Book::STATUS_TITLES.collect {|k,v| [v,k]}, {}, {class: "form-control"} %>
             <% end %>
           </div>
 
