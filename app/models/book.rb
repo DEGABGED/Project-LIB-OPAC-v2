@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
+  belongs_to :user, foreign_key: :last_editor
+
   SECTIONS = ["-Uncategorized",
               "Arts and Crafts",
               "Bible Stories",

@@ -12,6 +12,9 @@
             <th>Author</th>
             <th>Section</th>
             <th>Status</th>
+            <% if user_signed_in? %>
+              <th>Last Editor</th>
+            <% end %>
           </tr>
         </thead>
           <tbody>
@@ -26,6 +29,9 @@
                 <td><%= book.author %></td>
                 <td><%= book.section %></td>
                 <td><%= book.status_title %></td>
+                <% if user_signed_in? %>
+                  <td><%= book.user ? book.user.email : "N/A" %></td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>

@@ -28,6 +28,7 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
+    @book.user = current_user
 
     respond_to do |format|
       if @book.save
@@ -44,6 +45,7 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
+    @book.user = current_user
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to books_path, notice: 'Book was successfully updated.' }
