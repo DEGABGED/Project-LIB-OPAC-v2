@@ -9,17 +9,26 @@
     <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
       <% if user_signed_in? %>
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Name of Authorized User">
-        <a class="nav-link" href="Name of Authorized User.html">
+        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-area-chart"></i>
           <span class="nav-link-text"><%= current_user.email %></span>
         </a>
+        <ul class="sidenav-second-level collapse" id="collapseMulti">
+          <li>
+            <%= link_to(destroy_user_session_path, class: "nav-link", method: :delete) do %>
+              <i class="fa fa-fw fa-area-chart"></i>
+              <span class="nav-link-text">Logout</span>
+            <% end %>
+          </li>
+        </ul>
       </li>
+
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Catalogue Management">
-        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
+        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-sitemap"></i>
           <span class="nav-link-text">Catalogue Management</span>
         </a>
-        <ul class="sidenav-second-level collapse" id="collapseMulti">
+        <ul class="sidenav-second-level collapse" id="collapseMulti2">
           <li>
             <%= link_to "Create Book Entry", new_book_path, remote: true, id: "createBtn" %>
           </li>
@@ -80,6 +89,7 @@
           </span>
         <% end %>
       </li>
+<!--
       <% if user_signed_in? %>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Logout">
           <%= link_to(destroy_user_session_path, class: "nav-link", method: :delete) do %>
@@ -88,6 +98,7 @@
           <% end %>
         </li>
       <% end %>
+-->
     </ul>
   </div>
 </nav>
