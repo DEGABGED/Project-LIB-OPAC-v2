@@ -23,25 +23,7 @@
 
 ## Creating a Superuser
 user = User.new
-user.email = 'test@example.com'
-user.password = 'password192'
-user.password_confirmation = 'password192'
+user.email = 'project-lib-opac@gmail.com'
+user.password = 'extrach0s'
+user.password_confirmation = 'extrach0s'
 user.save!
-
-## Creating the book records
-book_list = [
-  {section: "Arts and Crafts", title: "Brilliant Art", author: "Garry Walton", batch: 0, size: "Small", callnr: 1},
-  {section: "Arts and Crafts", title: "Fantastic Crafts", author: "Paragon", batch: 0, size: "Small", callnr: 2},
-  {section: "Bible Stories", title: "838 Ways to Amuse a Child", author: "June Johnson", batch: 0, size: "Small", callnr: 3},
-  {section: "Bible Stories", title: "Balloon Animals", author: "Barb Whiter", batch: 0, size: "Small", callnr: 4},
-  {section: "Arts and Crafts", title: "A trip to the Farm", author: "Zapp", batch: 0, size: "Medium", callnr: 1},
-  {section: "Arts and Crafts", title: "Here comes the Circus", author: "Zapp", batch: 0, size: "Medium", callnr: 2},
-  {section: "Arts and Crafts", title: "The Parents Party Book", author: "Sally Lee, Eleanor Levie", batch: 0, size: "Medium", callnr: 3},
-  {section: "Bible Stories", title: "Let's Pretend", author: "Pamela Mainprize, Moira Howes", batch: 0, size: "Medium", callnr: 4},
-  {section: "Bible Stories", title: "Parties for Kids", author: "Michaeline Bresnahan, Joan Macfarlane", batch: 0, size: "Large", callnr: 1},
-  {section: "Arts and Crafts", title: "Vikas Fun With Craft", author: "Subodh Narvekar", batch: 0, size: "Large", callnr: 2}
-]
-
-book_list.each do |b|
-  Book.create(b)
-end
